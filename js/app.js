@@ -53,6 +53,14 @@ function init() {
         render();
     }
 
+    function update() {
+        currentLevel++;
+        reset();
+    }
+
+    function render() {
+        let imageCenter;
+        animate();
 
     }
 
@@ -124,35 +132,6 @@ function init() {
 
             }
             flag = false;
-
-        }
-
-        if (iterator1 > 743) {
-
-            iterator1 = 0;
-            randX1 = Math.random();
-            randImages1 = Math.random();
-
-            if (flag1 == false) {
-                missed++;
-
-            }
-            flag1 = false;
-
-        }
-        if (iterator2 > 743) {
-            if (imageCenter2.name == "nakov") {
-                missed--;
-            }
-            iterator2 = 0;
-            randX2 = Math.random();
-            randImages2 = Math.random();
-            kurec = Math.random();
-            if (flag2 == false) {
-                missed++;
-
-            }
-            flag2 = false;
 
         }
 
