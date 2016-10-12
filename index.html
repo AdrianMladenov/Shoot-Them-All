@@ -5,7 +5,7 @@
     <title>SoftUni Game</title>
 </head>
 <body>
-<canvas width="1200" height="600" style="border: 5px solid orange; background-color:rgba(158, 167, 184, 0.2);"  id="canvas">Canvas not supported</canvas>
+<canvas width="1200" height="600" style= "cursor: crosshair;  border: 5px solid orange; background-color:rgba(158, 167, 184, 0.2);"  id="canvas">Canvas not supported</canvas>
 <img src="./src/nakov.png" style="display: none;" id="nakovImg"/>
 <img src="./src/bojo.png" style="display: none;" id="bojoImg"/>
 <img src="./src/acho.png" style="display: none;" id="achoImg"/>
@@ -23,11 +23,9 @@
 <img src="./src/bullet.png" style="display: none;" id="bulletImg"/>
 
 
-<img src="./src/knife.png" style="display: none;" id="cursor"/>
-
 <script src="./js/app.js"></script>
 <div>
-<button onclick="init()">Start New Game!</button>
+    <button onclick="init();this.blur();">Start New Game!</button>
 </div>
 </body>
 </html>
