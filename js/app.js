@@ -24,6 +24,11 @@ function init() {
     let iterator1 = 0;
     let iterator2 = 0;
     let flag2 = false;
+	let shootSound = document.getElementById('shootSound');
+    let theBossIsComingSound = document.getElementById('theBossSound');
+    let gameOverSound = document.getElementById('gameover');
+    let levelUpSound = document.getElementById('levelUp');
+
 
 
     let arrOfUsers = [];
@@ -81,7 +86,7 @@ function init() {
         ctx.fillText(`Score: ${bonus}`, 565, 25);
         ctx.fillText(`Misses left: ${currentLevel - missed + 1} `, 1090, 25);
         ctx.fillText(`Bullets: ${currentLevel * 8 - bullets}`, 860, 25);
-        ctx.drawImage(document.getElementById("bulletImg"), 670, 5);
+        ctx.drawImage(document.getElementById("bulletImg"), 530, 5);
         ctx.fill();
 
         ctx.beginPath();
@@ -119,7 +124,10 @@ function init() {
         ctx.drawImage(arrOfUsers[Math.round(randImages * 9)], xCoords, yCoords);
         if (Math.round(kurec * 3) <= 3) {
             ctx.drawImage(arrOfBombBonuses[Math.round(randImages2 * 3)], xCoords2, yCoords2);
-            iterator2 += ((3 + currentLevel / 3) + (2 + currentLevel / 4)) / 2
+            iterator2 += ((3 + currentLevel / 3) + (2 + currentLevel / 4)) / 2;
+			if (Math.round(randImages2 * 3) == 3){
+                theBossIsComingSound.play();
+            }
 
         }
 
@@ -174,11 +182,13 @@ function init() {
         }
         else if (currentLevel * 5 <= hitted) {
             cls();
-            ctx.fillText("PRESS SPACE TO CONTINUE", 505, 300);
+            ctx.fillText("PRESS SPACE TO CONTINUE", 495, 300);
+			levelUpSound.play();
         }
         else {
             cls();
-            ctx.fillText("!!! GAME OVER !!!", 540, 170, 1000);
+            ctx.fillText("!!! GAME OVER !!!", 545, 170, 1000);
+			gameOverSound.play();
 
             bestScores = bestScores.sort((a, b) => b - a);
             if (bonus > bestScores[bestScores.length - 1]) {
@@ -245,6 +255,7 @@ function init() {
             flag2 = true;
         }
         bullets++;
+		shootSound.play();
     }
 
     function cls() {
