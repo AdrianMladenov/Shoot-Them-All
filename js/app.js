@@ -196,24 +196,7 @@ function init() {
         let clickX = event.pageX;
         let clickY = event.pageY;
 
-        if ((clickX >= imageCenter.xCoord - 72 && clickX <= imageCenter.xCoord + 72) && (clickY >= imageCenter.yCoord - 72 && clickY <= imageCenter.yCoord + 72)) {
-            // console.log("FirstX:" + imageCenter.xCoord);
-            // console.log("FirstY:" + imageCenter.yCoord)
-            // console.log("Mouse:" + " X:" + clickX + " Y:" + clickY)
-            iterator = 2000;
-            hitted++;
-            bonus++;
-            flag = true;
-        }
-        if ((clickX >= imageCenter1.xCoord1 - 72 && clickX <= imageCenter1.xCoord1 + 72) && (clickY >= imageCenter1.yCoord1 - 72 && clickY <= imageCenter1.yCoord1 + 72)) {
-            // console.log("SecondX:" +imageCenter1.xCoord1);
-            // console.log("SecondY:" +imageCenter1.yCoord1)
-            // console.log("Mouse:" + " X:" + clickX + " Y:" + clickY)
-            iterator1 = 2000;
-            hitted++;
-            bonus++;
-            flag1 = true;
-        }
+       
         if ((clickX >= imageCenter2.xCoord2 - 72 && clickX <= imageCenter2.xCoord2 + 72) && (clickY >= imageCenter2.yCoord2 - 72 && clickY <= imageCenter2.yCoord2 + 72)) {
             switch (imageCenter2.name) {
                 case "nakov":
