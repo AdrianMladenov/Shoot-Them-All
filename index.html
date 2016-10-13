@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>SoftUni Game</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-<canvas width="1200" height="600" style= "cursor: crosshair;  border: 5px solid orange; background-color:rgba(158, 167, 184, 0.2);"  id="canvas">Canvas not supported</canvas>
+
+<canvas width="1300" height="550" style= "cursor: crosshair;  border: 5px solid darkblue;"  id="canvas">Canvas not supported</canvas>
 <img src="./src/nakov.png" style="display: none;" id="nakovImg"/>
 <img src="./src/bojo.png" style="display: none;" id="bojoImg"/>
 <img src="./src/acho.png" style="display: none;" id="achoImg"/>
@@ -21,11 +23,11 @@
 <img src="./src/viktor2.png" style="display: none;" id="viktor2Img"/>
 <img src="./src/niki.png" style="display: none;" id="nikiImg"/>
 <img src="./src/bullet.png" style="display: none;" id="bulletImg"/>
-
+<div id="divBtn">
+    <button onclick="init();this.blur();" id="btnStart">Start New Game!</button>
+</div>
 
 <script src="./js/app.js"></script>
-<div>
-    <button onclick="init();this.blur();">Start New Game!</button>
-</div>
+
 </body>
 </html>
