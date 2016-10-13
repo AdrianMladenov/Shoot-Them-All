@@ -23,7 +23,7 @@ function init() {
     let flag1 = false;
     let iterator1 = 0;
     let iterator2 = 0;
-    let flag2 = false;
+
 
 
     let arrOfUsers = [];
