@@ -38,11 +38,7 @@ function init() {
     arrOfUsers[8] = (document.getElementById("viktor2Img"));
     arrOfUsers[9] = (document.getElementById("nikiImg"));
 
-    let arrOfBombBonuses = [];
-    arrOfBombBonuses[0] = (document.getElementById("evchetoImg"));
-    arrOfBombBonuses[1] = (document.getElementById("katiImg"));
-    arrOfBombBonuses[2] = (document.getElementById("alexImg"));
-    arrOfBombBonuses[3] = (document.getElementById('nakovImg'));
+  
 
 
     canvas.addEventListener('click', hitImage);
