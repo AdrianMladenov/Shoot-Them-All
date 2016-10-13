@@ -6,24 +6,24 @@ function init() {
 
     let canvas = document.getElementById("canvas");
     let ctx = canvas.getContext("2d");
-    let iterator = 0;
-    let randX = Math.random();
-    let randImages = Math.random();
-    let randX1 = Math.random();
-    let randImages1 = Math.random();
+    let imageYPositionBasic = 0;
+    let randomXCoord = Math.random();
+    let randomArrayImageIndex = Math.random();
+    let randomXSecondBasic = Math.random();
+    let randomSecondArrayImageIndex = Math.random();
     let hitted = 0;
-    let randImages2 = Math.random();
-    let randX2 = Math.random();
-    let kurec = Math.random();
+    let randomSpecialArrayImageIndex = Math.random();
+    let randomXSpecialStart = Math.random();
+    let randomSpecialGenerator = Math.random();
     let bonus = 0;
     let missed = 0;
     let currentLevel = 0;
     let bullets = 0;
-    let flag = false;
-    let flag1 = false;
-    let iterator1 = 0;
-    let iterator2 = 0;
-    let flag2 = false;
+    let flagBasicImage = false;
+    let flagSecondBasicImage = false;
+    let imageYPositionSecondBasic = 0;
+    let imageYPositionSpecials = 0;
+    let flagSpecialImage = false;
 	let shootSound = document.getElementById('shootSound');
     let theBossIsComingSound = document.getElementById('theBossSound');
     let gameOverSound = document.getElementById('gameover');
@@ -31,23 +31,23 @@ function init() {
 
 
 
-    let arrOfUsers = [];
-    arrOfUsers[0] = (document.getElementById("bojoImg"));
-    arrOfUsers[1] = (document.getElementById("achoImg"));
-    arrOfUsers[2] = (document.getElementById("dinkoImg"));
-    arrOfUsers[3] = (document.getElementById("georgiImg"));
-    arrOfUsers[4] = (document.getElementById("royalImg"));
-    arrOfUsers[5] = (document.getElementById("trifonImg"));
-    arrOfUsers[6] = (document.getElementById("simoImg"));
-    arrOfUsers[7] = (document.getElementById("viktor1Img"));
-    arrOfUsers[8] = (document.getElementById("viktor2Img"));
-    arrOfUsers[9] = (document.getElementById("nikiImg"));
+    let arrayOfBasicImages = [];
+    arrayOfBasicImages[0] = (document.getElementById("bojoImg"));
+    arrayOfBasicImages[1] = (document.getElementById("achoImg"));
+    arrayOfBasicImages[2] = (document.getElementById("dinkoImg"));
+    arrayOfBasicImages[3] = (document.getElementById("georgiImg"));
+    arrayOfBasicImages[4] = (document.getElementById("royalImg"));
+    arrayOfBasicImages[5] = (document.getElementById("trifonImg"));
+    arrayOfBasicImages[6] = (document.getElementById("simoImg"));
+    arrayOfBasicImages[7] = (document.getElementById("viktor1Img"));
+    arrayOfBasicImages[8] = (document.getElementById("viktor2Img"));
+    arrayOfBasicImages[9] = (document.getElementById("nikiImg"));
 
-    let arrOfBombBonuses = [];
-    arrOfBombBonuses[0] = (document.getElementById("evchetoImg"));
-    arrOfBombBonuses[1] = (document.getElementById("katiImg"));
-    arrOfBombBonuses[2] = (document.getElementById("alexImg"));
-    arrOfBombBonuses[3] = (document.getElementById('nakovImg'));
+    let arrayOfSpecialsImages = [];
+    arrayOfSpecialsImages[0] = (document.getElementById("evchetoImg"));
+    arrayOfSpecialsImages[1] = (document.getElementById("katiImg"));
+    arrayOfSpecialsImages[2] = (document.getElementById("alexImg"));
+    arrayOfSpecialsImages[3] = (document.getElementById('nakovImg'));
 
 
     canvas.addEventListener('click', hitImage);
@@ -95,89 +95,89 @@ function init() {
 
         ctx.beginPath();
 
-        let xCoords = Math.round(randX * 1157);
-        let yCoords = 550 - iterator;
-        let xCoords1 = Math.round(randX1 * 1157);
-        let yCoords1 = 550 - iterator1;
-        let xCoords2 = Math.round(randX2 * 1157);
-        let yCoords2 = 550 - iterator2;
+        let xCoordsBasic = Math.round(randomXCoord * 1157);
+        let yCoordsBasic = 550 - imageYPositionBasic;
+        let xCoordsSecondBasic = Math.round(randomXSecondBasic * 1157);
+        let yCoordsSecondBasic = 550 - imageYPositionSecondBasic;
+        let xCoordsSpecials = Math.round(randomXSpecialStart * 1157);
+        let yCoordsSpecials = 550 - imageYPositionSpecials;
 
-        imageCenter = {xCoord: xCoords + 72, yCoord: yCoords + 72};
-        imageCenter1 = {xCoord1: xCoords1 + 72, yCoord1: yCoords1 + 72};
+        imageCenter = {xCoord: xCoordsBasic + 72, yCoord: yCoordsBasic + 72};
+        imageCenter1 = {xCoord1: xCoordsSecondBasic + 72, yCoord1: yCoordsSecondBasic + 72};
 
-        switch (Math.round(randImages2 * 3)) {
+        switch (Math.round(randomSpecialArrayImageIndex * 3)) {
             case 0:
-                imageCenter2 = {xCoord2: xCoords2 + 72, yCoord2: yCoords2 + 72, name: 'evcheto'};
+                imageCenter2 = {xCoord2: xCoordsSpecials + 72, yCoord2: yCoordsSpecials + 72, name: 'evcheto'};
                 break;
             case 1:
-                imageCenter2 = {xCoord2: xCoords2 + 72, yCoord2: yCoords2 + 72, name: 'kati'};
+                imageCenter2 = {xCoord2: xCoordsSpecials + 72, yCoord2: yCoordsSpecials + 72, name: 'kati'};
                 break;
             case 2:
-                imageCenter2 = {xCoord2: xCoords2 + 72, yCoord2: yCoords2 + 72, name: 'alex'};
+                imageCenter2 = {xCoord2: xCoordsSpecials + 72, yCoord2: yCoordsSpecials + 72, name: 'alex'};
                 break;
             case 3:
-                imageCenter2 = {xCoord2: xCoords2 + 72, yCoord2: yCoords2 + 72, name: 'nakov'};
+                imageCenter2 = {xCoord2: xCoordsSpecials + 72, yCoord2: yCoordsSpecials + 72, name: 'nakov'};
                 break;
         }
 
         if (currentLevel > 2) {
-            ctx.drawImage(arrOfUsers[Math.round(randImages1 * 9)], xCoords1, yCoords1);
-            iterator1 += (3 + currentLevel / 3);
+            ctx.drawImage(arrayOfBasicImages[Math.round(randomSecondArrayImageIndex * 9)], xCoordsSecondBasic, yCoordsSecondBasic);
+            imageYPositionSecondBasic += (3 + currentLevel / 3);
 
         }
-        ctx.drawImage(arrOfUsers[Math.round(randImages * 9)], xCoords, yCoords);
-        if (Math.round(kurec * 3) <= 3) {
-            ctx.drawImage(arrOfBombBonuses[Math.round(randImages2 * 3)], xCoords2, yCoords2);
-            iterator2 += ((3 + currentLevel / 3) + (2 + currentLevel / 4)) / 2;
-			if (Math.round(randImages2 * 3) == 3){
+        ctx.drawImage(arrayOfBasicImages[Math.round(randomArrayImageIndex * 9)], xCoordsBasic, yCoordsBasic);
+        if (Math.round(randomSpecialGenerator * 3) <= 3) {
+            ctx.drawImage(arrayOfSpecialsImages[Math.round(randomSpecialArrayImageIndex * 3)], xCoordsSpecials, yCoordsSpecials);
+            imageYPositionSpecials += ((3 + currentLevel / 3) + (2 + currentLevel / 4)) / 2;
+			if (Math.round(randomSpecialArrayImageIndex * 3) == 3){
                 theBossIsComingSound.play();
             }
 
         }
 
-        iterator += (2 + currentLevel / 4);
+        imageYPositionBasic += (2 + currentLevel / 4);
 
 
-        if (iterator > 693) {
+        if (imageYPositionBasic > 693) {
 
-            iterator = 0;
-            randX = Math.random();
-            randImages = Math.random();
+            imageYPositionBasic = 0;
+            randomXCoord = Math.random();
+            randomArrayImageIndex = Math.random();
 
-            if (flag == false) {
+            if (flagBasicImage == false) {
                 missed++;
 
             }
-            flag = false;
+            flagBasicImage = false;
 
         }
 
-        if (iterator1 > 693) {
+        if (imageYPositionSecondBasic > 693) {
 
-            iterator1 = 0;
-            randX1 = Math.random();
-            randImages1 = Math.random();
+            imageYPositionSecondBasic = 0;
+            randomXSecondBasic = Math.random();
+            randomSecondArrayImageIndex = Math.random();
 
-            if (flag1 == false) {
+            if (flagSecondBasicImage == false) {
                 missed++;
 
             }
-            flag1 = false;
+            flagSecondBasicImage = false;
 
         }
-        if (iterator2 > 693) {
+        if (imageYPositionSpecials > 693) {
             if (imageCenter2.name == "nakov") {
                 missed--;
             }
-            iterator2 = 0;
-            randX2 = Math.random();
-            randImages2 = Math.random();
-            kurec = Math.random();
-            if (flag2 == false) {
+            imageYPositionSpecials = 0;
+            randomXSpecialStart = Math.random();
+            randomSpecialArrayImageIndex = Math.random();
+            randomSpecialGenerator = Math.random();
+            if (flagSpecialImage == false) {
                 missed++;
 
             }
-            flag2 = false;
+            flagSpecialImage = false;
 
         }
 
@@ -187,6 +187,7 @@ function init() {
         else if (currentLevel * 5 <= hitted) {
             cls();
             ctx.fillText("PRESS SPACE TO CONTINUE", 495, 300);
+            ctx.fillText(`CURRENT SCORE: ${bonus}`, 540, 330);
 			levelUpSound.play();
         }
         else {
@@ -223,19 +224,19 @@ function init() {
             // console.log("FirstX:" + imageCenter.xCoord);
             // console.log("FirstY:" + imageCenter.yCoord)
             // console.log("Mouse:" + " X:" + clickX + " Y:" + clickY)
-            iterator = 2000;
+            imageYPositionBasic = 2000;
             hitted++;
             bonus++;
-            flag = true;
+            flagBasicImage = true;
         }
         if ((clickX >= imageCenter1.xCoord1 - 72 && clickX <= imageCenter1.xCoord1 + 72) && (clickY >= imageCenter1.yCoord1 - 72 && clickY <= imageCenter1.yCoord1 + 72)) {
             // console.log("SecondX:" +imageCenter1.xCoord1);
             // console.log("SecondY:" +imageCenter1.yCoord1)
             // console.log("Mouse:" + " X:" + clickX + " Y:" + clickY)
-            iterator1 = 2000;
+            imageYPositionSecondBasic = 2000;
             hitted++;
             bonus++;
-            flag1 = true;
+            flagSecondBasicImage = true;
         }
         if ((clickX >= imageCenter2.xCoord2 - 72 && clickX <= imageCenter2.xCoord2 + 72) && (clickY >= imageCenter2.yCoord2 - 72 && clickY <= imageCenter2.yCoord2 + 72)) {
             switch (imageCenter2.name) {
@@ -255,8 +256,8 @@ function init() {
                     bullets--;
                     break;
             }
-            iterator2 = 2000;
-            flag2 = true;
+            imageYPositionSpecials = 2000;
+            flagSpecialImage = true;
         }
         bullets++;
 		shootSound.play();
@@ -267,14 +268,14 @@ function init() {
     }
 
     function reset() {
-        randX = Math.random();
-        randImages = Math.random();
+        randomXCoord = Math.random();
+        randomArrayImageIndex = Math.random();
         hitted = 0;
         missed = 0;
         bullets = 0;
-        iterator = 0;
-        iterator1 = 0;
-        iterator2 = 0;
+        imageYPositionBasic = 0;
+        imageYPositionSecondBasic = 0;
+        imageYPositionSpecials = 0;
     }
 
     requestAnimationFrame(main)
