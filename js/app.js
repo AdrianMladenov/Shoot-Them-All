@@ -81,12 +81,16 @@ function init() {
        // ctx.font = "24px Arial";
         ctx.fillStyle = "rgba(35, 68, 101, 0.9)";
         ctx.opacity = 0.8;
-        ctx.fillText(`Hits: ${hitted}`, 25, 25);
-        ctx.fillText(`Level: ${currentLevel }`, 260, 25);
-        ctx.fillText(`Score: ${bonus}`, 565, 25);
-        ctx.fillText(`Misses left: ${currentLevel - missed + 1} `, 1090, 25);
-        ctx.fillText(`Bullets: ${currentLevel * 8 - bullets}`, 860, 25);
-        ctx.drawImage(document.getElementById("bulletImg"), 530, 5);
+        ctx.fillText(`Hits: ${hitted}`, 55, 25);
+        ctx.fillText(`Level: ${currentLevel }`,300, 25);
+        ctx.fillText(`Score: ${bonus}`, 580, 25);
+        ctx.fillText(`Misses left: ${currentLevel - missed + 1} `, 1100, 25);
+        ctx.fillText(`Bullets: ${currentLevel * 8 - bullets}`, 840, 25);
+        ctx.drawImage(document.getElementById("hitsImg"), 25, 5);
+        ctx.drawImage(document.getElementById("levelImg"), 270, 5);
+        ctx.drawImage(document.getElementById("scoreImg"), 550, 5);
+        ctx.drawImage(document.getElementById("bulletsImg"), 810, 5);
+        ctx.drawImage(document.getElementById("missedImg"), 1070, 5);
         ctx.fill();
 
         ctx.beginPath();
